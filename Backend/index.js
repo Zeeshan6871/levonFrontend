@@ -38,6 +38,11 @@ const barData = {
     },
   ],
 };
+
+app.get("/", (req, res) => {
+  res.send("Server running fine :)");
+});
+
 app.get("/tableData", (req, res) => {
   try {
     res.status(200).json({ barData, lineData });

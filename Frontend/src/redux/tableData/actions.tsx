@@ -7,6 +7,8 @@ import {
 } from "./actionTypes";
 import { TableDataPayload, AppAction, AppThunk } from "./dataTypes";
 
+const url = "https://levonfrontend.onrender.com" || "http://localhost:8080";
+
 export const getTableLoadingAction = (): AppAction => {
   return { type: GET_TABLE_LOADING };
 };
@@ -28,7 +30,7 @@ export const getTable = (): AppThunk => (dispatch: Dispatch<AppAction>) => {
   dispatch(getTableLoadingAction());
   return new Promise<void>((resolve, reject) => {
     axios
-      .get<TableDataPayload>(`http://localhost:8080/tableData`)
+      .get<TableDataPayload>(`${url}/tableData`)
       .then((res) => {
         // console.log(res.data);
         dispatch(getTableSuccessAction(res.data));
